@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: transaction-service
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Pragati2708/k8s-gitops-config.git
+    targetRevision: HEAD
+    path: transaction-service
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: uat
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
