@@ -26,7 +26,7 @@ module "vpc" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.21.0"   # ✅ stable (fixes your error)
+  version = "19.21.0" # ✅ stable (fixes your error)
 
   cluster_name    = var.cluster_name
   cluster_version = "1.29"
