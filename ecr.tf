@@ -1,8 +1,9 @@
 locals {
   service_repositories = [
+    "frontend",
     "legacy-service",
     "transaction-service",
-    "notification-service",
+    "notification-service"
   ]
 }
 
@@ -12,9 +13,16 @@ resource "aws_ecr_repository" "service" {
   name                 = each.value
   image_tag_mutability = "MUTABLE"
 
+
   image_scanning_configuration {
     scan_on_push = true
   }
+
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
 
   tags = {
     Environment = "dev"

@@ -29,7 +29,7 @@ module "eks" {
   version = "19.21.0" # ✅ stable (fixes your error)
 
   cluster_name    = var.cluster_name
-  cluster_version = "1.29"
+  cluster_version = "1.33"
 
   cluster_endpoint_public_access = true
 
@@ -43,7 +43,7 @@ module "eks" {
       min_size     = 1
 
       instance_types = ["t3.medium"]
-      ami_type       = "AL2_x86_64"
+      ami_type       = "AL2023_x86_64_STANDARD"
 
       subnet_ids = module.vpc.private_subnets
     }
